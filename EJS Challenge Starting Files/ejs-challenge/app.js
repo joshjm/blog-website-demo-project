@@ -48,6 +48,11 @@ app.get("/compose", function (req, res) {
 app.get("/posts/:topic", function(req, res){
   console.log(req.params.topic);
   res.send(req.params.topic);
+ posts.forEach(element => {
+   if (element.title == req.params.topic){
+     console.log("match found!");
+   }
+ });
 })
 
 app.post("/compose", function (req, res) {
