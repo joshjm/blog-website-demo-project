@@ -44,6 +44,12 @@ app.get("/compose", function (req, res) {
   });
 })
 
+// Dynamically create pages from requests
+app.get("/posts/:topic", function(req, res){
+  console.log(req.params.topic);
+  res.send(req.params.topic);
+})
+
 app.post("/compose", function (req, res) {
   const postData = {
     title: req.body.titleText,
@@ -52,12 +58,6 @@ app.post("/compose", function (req, res) {
   posts.push(postData);
   res.redirect("/");
 })
-
-
-
-
-
-
 
 app.listen(3000, function () {
   console.log("Server started on port 3000");
