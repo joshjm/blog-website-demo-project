@@ -21,10 +21,15 @@ app.use(bodyParser.urlencoded({
 app.use(express.static("public"));
 
 app.get("/", function (req, res) {
- 
+  let links = [];
+  posts.forEach(element => {
+    let postKebabName = lodash.kebabCase(element.title); 
+    links.push(postKebabName);
+  });
   res.render("home", {
     content: homeStartingContent,
-    posts: posts
+    posts: posts,
+    links: links
   });
 })
 
