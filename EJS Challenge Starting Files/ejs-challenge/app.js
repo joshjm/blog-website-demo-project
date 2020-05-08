@@ -24,7 +24,6 @@ app.get("/", function (req, res) {
     content: homeStartingContent,
     posts: posts
   });
-  console.log(posts);
 })
 
 app.get("/about", function (req, res) {
@@ -46,8 +45,6 @@ app.get("/compose", function (req, res) {
 })
 
 app.post("/compose", function (req, res) {
-  console.log(req.body.titleText);
-  console.log(req.body.bodyText);
   const postData = {
     title: req.body.titleText,
     body: req.body.bodyText
