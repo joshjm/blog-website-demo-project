@@ -21,6 +21,7 @@ app.use(bodyParser.urlencoded({
 app.use(express.static("public"));
 
 app.get("/", function (req, res) {
+ 
   res.render("home", {
     content: homeStartingContent,
     posts: posts
@@ -47,13 +48,15 @@ app.get("/compose", function (req, res) {
 
 // Dynamically create pages from requests
 app.get("/posts/:topic", function (req, res) {
-  res.send(req.params.topic);
+  //res.send(req.params.topic);
   let topic = req.params.topic;
   let kebabTopic = lodash.kebabCase(req.params.topic);
   
   posts.forEach(element => {
     if (lodash.kebabCase(element.title) == req.params.topic) {
       console.log("match found!");
+      res.render("post", {title: element.title, body: element.body});
+
     }
   });
 })
